@@ -1,0 +1,17 @@
+{
+	"name": "ivoba/silverstripe-i18n-fieldtypes",
+	"description": "better i18n fieldtypes for currency & date",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "i18n", "currency", "date"],
+	"license": "MIT License",
+	"authors": [
+		{
+			"name": "Ivo Bathke",
+        		"email": "ivo.bathke@gmail.com"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "3.*",
+		"silverstripe/cms": "3.*"
+	},
+}

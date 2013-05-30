@@ -1,9 +1,10 @@
 <?php
 // * * * HIGHLY RECOMMENDED SETTINGS COMMON SILVERSTRIPE
-//Payment::set_site_currency('EUR');
+//Currency::setCurrencySymbol('€');
 //i18n::set_locale('de_DE');
 //if you use Zend Currency dont set LC_ALL
 //because of: http://framework.zend.com/issues/browse/ZF-8806
+//and also SilverStripe Query Building might have troubles with floats
 //setlocale (LC_TIME, 'de_DE@euro', 'de_DE.UTF-8', 'de_DE', 'de', 'ge');
 
 // * * * I18N FIELDTYPES SETTINGS
@@ -28,7 +29,7 @@
 //I18nCurrency::setThousandDelimiter('.'); 
 
 //Money Formating -the Money / Zend way -
-//Object::useCustomClass('Money','CustomMoney', true);
+//Object::useCustomClass('Money','I18nMoney', true);
 //@see http://framework.zend.com/manual/en/zend.currency.options.html
-//CustomMoney::setOptions(array('display' => Zend_Currency::USE_SHORTNAME,
-//	  						  'position' => Zend_Currency::RIGHT));
+//I18nMoney::setOptions(array('display' => Zend_Currency::USE_SHORTNAME,
+//	  			'position' => Zend_Currency::RIGHT));

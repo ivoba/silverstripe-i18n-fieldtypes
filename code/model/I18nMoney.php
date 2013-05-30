@@ -5,7 +5,7 @@
  * @package modules: i18n_fieldtypes
  * @author ivo.bathke
  */
-class CustomMoney extends Money{
+class I18nMoney extends Money{
 
 	/**
 	 * possible options
@@ -33,6 +33,11 @@ class CustomMoney extends Money{
 	public function Nice($options = array()) {
 		$options = $this->initOptions($options);
 		$amount = $this->getAmount();
+		if(!isset($options['display'])) $options['display'] = Zend_Currency::USE_SYMBOL;
+		if(!isset($options['currency'])) $options['currency'] = $this->getCurrency();
+		if(!isset($options['symbol'])) {
+			$options['symbol'] = $this->currencyLib->getSymbol($this->getCurrency(), $this->getLocale());
+		}
 		return (is_numeric($amount)) ? $this->currencyLib->toCurrency($amount, $options) : '';
 	}
 
@@ -58,9 +63,7 @@ class CustomMoney extends Money{
 	}
 	
 	private function initOptions($options) {
-		//TODO cache when already called
 		$this->currencyLib->setLocale(i18n::get_locale());
-		$options = array_merge($options, self::$options);
-		return $options;
+		return array_merge($options, self::$options);
 	}
 }
